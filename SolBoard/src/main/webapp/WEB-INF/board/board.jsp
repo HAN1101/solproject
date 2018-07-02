@@ -7,6 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	
+	<center>
+		<h1>board Page</h1>
+	</center>
 </body>
 </html>
