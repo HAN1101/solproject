@@ -47,7 +47,7 @@
         </div>
         <div class="modal-body">
 			
-			<form class="form-signin" method=post action="../main/login_ok.do">
+			<form class="form-signin" method=post action="login_ok.do">
                 <input type="text" class="form-control" id="email" name="email" placeholder="Email"  required autofocus>
                 <input type="password" class="form-control" id="pwd" name="pwd" placeholder="Password" required>
                 <button class="btn btn-lg btn-primary btn-block" type="submit" >·Î±×ÀÎ</button>
