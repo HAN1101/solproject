@@ -32,16 +32,23 @@ public class LoginController {
 		
 		
 		
-		String email = request.getParameter("email");
+		String email = request.getParameter("email").toLowerCase();
 		String pwd   = request.getParameter("pwd");
 		
 		MemberVO vo = dao.LoginCheck(email);
-		String db_email = vo.getEmail();
+		String db_email = vo.getEmail().toLowerCase();
 		String db_pwd = vo.getPwd();
 		
-		if(db_email != email){
-			
+		if(db_email.equals(email)){
+			if(db_pwd.equals(pwd)){
+				
+				session.setAttribute("email", email);
+				return "main";
+			}else{
+				
+			}
 			return "main";
+			
 		}
 		
 		return "main";

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -22,19 +23,23 @@
       <div class="logo">
         <h1><a href="index.html"><span>Board</span>Login<br />
           <small>Board ANd Login</small></a></h1>
-      </div>
-      <div class="clr"></div>
-      <div class="menu_nav">
-        <ul>
-          <li class="active"><a href="main.do">Home</a></li>
-          <li><a href="../board/board.do">게시판</a></li>
-          <li><a href="notice.do">게시글</a></li>
-          <li data-toggle="modal" data-target="#myModal"><a>로그인</a></li>
-        </ul>
-      </div>
+		</div>
+		<div class="clr"></div>
+		<div class="menu_nav">
+			<ul>
+				<li class="active"><a href="main.do">Home</a></li>
+				<li><a href="../board/board.do">게시판</a></li>
+				<li><a href="notice.do">게시글</a></li>
+				<li data-toggle="modal" data-target="#myModal"><a>로그인</a></li>
+			<c:if test="${sessionScope.email != null }">
+					<input value="${sessionScope.email }님 어서오세요"/>
+			</c:if>
+	        </ul>
+		</div>
       <div class="clr"></div>
     </div>
   </div>
+  <c:if test="${sessionScope.email == null }">
   <!-- Modal -->
   <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
@@ -45,18 +50,17 @@
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title">Modal Header</h4>
         </div>
-        <div class="modal-body">
-			
-			<form class="form-signin" method=post action="login_ok.do">
-                <input type="text" class="form-control" id="email" name="email" placeholder="Email"  required autofocus>
-                <input type="password" class="form-control" id="pwd" name="pwd" placeholder="Password" required>
-                <button class="btn btn-lg btn-primary btn-block" type="submit" >로그인</button>
-                <span class="clearfix"></span>
-            </form>
-			
-			
-			
-        </div>
+		
+			<div class="modal-body">
+				<form class="form-signin" method=post action="login_ok.do">
+					<input type="text" class="form-control" id="email" name="email" placeholder="Email"  required autofocus>
+					<input type="password" class="form-control" id="pwd" name="pwd" placeholder="Password" required>
+					<button class="btn btn-lg btn-primary btn-block" type="submit" >로그인</button>
+					<span class="clearfix"></span>
+				</form>
+			</div>
+		
+
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
@@ -64,5 +68,6 @@
       
     </div>
   </div>
+  </c:if>
 </body>
 </html>
