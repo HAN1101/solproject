@@ -30,16 +30,18 @@
 				<li class="active"><a href="main.do">Home</a></li>
 				<li><a href="../board/board.do">게시판</a></li>
 				<li><a href="notice.do">게시글</a></li>
-				<li data-toggle="modal" data-target="#myModal"><a>로그인</a></li>
+				  <c:if test="${sessionScope.email == null }">
+					<li data-toggle="modal" data-target="#myModal"><a>로그인</a></li>
+				</c:if>
 			<c:if test="${sessionScope.email != null }">
-					<input value="${sessionScope.email }님 어서오세요"/>
+					<li><a style="text-align: right">${sessionScope.email }님</a> </li>
 			</c:if>
 	        </ul>
 		</div>
       <div class="clr"></div>
     </div>
   </div>
-  <c:if test="${sessionScope.email == null }">
+
   <!-- Modal -->
   <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
@@ -68,6 +70,5 @@
       
     </div>
   </div>
-  </c:if>
 </body>
 </html>
